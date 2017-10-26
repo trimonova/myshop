@@ -2,8 +2,10 @@ from django.shortcuts import render
 from .models import OrderItem
 from .forms import OrderCreateForm
 from cart.cart import Cart
+from django.template import RequestContext
+from django.views.decorators.csrf import csrf_protect
 
-
+@csrf_protect
 def OrderCreate(request):
     cart = Cart(request)
     if request.method == 'POST':
